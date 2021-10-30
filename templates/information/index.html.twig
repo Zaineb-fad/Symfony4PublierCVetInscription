@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Information index{% endblock %}
+
+{% block body %}
+    <h1>Information index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Pays</th>
+                <th>Gouvernat</th>
+                <th>Ville</th>
+                <th>Postal</th>
+                <th>Adress</th>
+                <th>Name</th>
+                <th>Experience</th>
+                <th>Entreprise</th>
+                <th>Mission</th>
+               
+                <th>Description</th>
+                <th>Niveau_etud</th>
+                <th>Specialite</th>
+                <th>Universite</th>
+               
+                
+                <th>Etude</th>
+                <th>Langue</th>
+                <th>Competences</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for information in informations %}
+            <tr>
+                <td>{{ information.id }}</td>
+                <td>{{ information.pays }}</td>
+                <td>{{ information.gouvernat }}</td>
+                <td>{{ information.ville }}</td>
+                <td>{{ information.postal }}</td>
+                <td>{{ information.adress }}</td>
+                <td>{{ information.name }}</td>
+                <td>{{ information.experience }}</td>
+                <td>{{ information.entreprise }}</td>
+                <td>{{ information.mission }}</td>
+                
+                <td>{{ information.description }}</td>
+                <td>{{ information.niveauEtude }}</td>
+                <td>{{ information.specialite }}</td>
+                <td>{{ information.universite }}</td>
+                
+                <td>{{ information.etude }}</td>
+                <td>{{ information.langue }}</td>
+                <td>{{ information.competences }}</td>
+                <td>
+                    <a href="{{ path('information_show', {'id': information.id}) }}">show</a>
+                    <a href="{{ path('information_edit', {'id': information.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="24">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('information_new') }}">Create new</a>
+{% endblock %}

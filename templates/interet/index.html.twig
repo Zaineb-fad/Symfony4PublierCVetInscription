@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interet index{% endblock %}
+
+{% block body %}
+    <h1>Interet index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Experience</th>
+                <th>Poste</th>
+                <th>Salaire</th>
+                <th>Status</th>
+                <th>Activite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for interet in interets %}
+            <tr>
+                <td>{{ interet.id }}</td>
+                <td>{{ interet.experience }}</td>
+                <td>{{ interet.poste }}</td>
+                <td>{{ interet.salaire }}</td>
+                <td>{{ interet.status }}</td>
+                <td>{{ interet.activite }}</td>
+                <td>
+                    <a href="{{ path('interet_show', {'id': interet.id}) }}">show</a>
+                    <a href="{{ path('interet_edit', {'id': interet.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('interet_new') }}">Create new</a>
+{% endblock %}
